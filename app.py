@@ -46,13 +46,18 @@ data ="Optimization terminated successfully (Exit mode 0) Current function value
 
 
 def bug_fixer(text_input):
-  response = openai.ChatCompletion.create(
-  model="text-davinci-003",
+  response = openai.Completion.create(
+  engine="text-davinci-003",
   messages=[
       {"role": "user", "content": "Tell the following in a way that is explainable to clients, dont talk technical. Based on only the following: answer the following"+data+"Tell the user the how much it matters and implications of the answer as well"+fixed}
             
    ]
+  
 )
+
+
+  
+  
   return response['choices'][0]['message']['content']
 
 
