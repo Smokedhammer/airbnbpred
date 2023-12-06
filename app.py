@@ -59,7 +59,7 @@ import openai
 
 import openai
 
-def bug_fixer(text_input, data, fixed, api_key):
+def bug_fixer(data, fixed, api_key):
     try:
         # Set the API key
         openai.api_key = api_key
@@ -101,7 +101,7 @@ st.title("Welcome to the airbnb prediction tool tool powered by the latest AI te
 
 
 fixed=st.text_area("Enter your question")
-st.write(bug_fixer(fixed))
+st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
     
 
 st.write("----------------------------------------------------------")
