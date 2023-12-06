@@ -22,6 +22,7 @@ with streamlit_analytics.track():
 
 openai.api_key = "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"
 
+
 hide_streamlit_style = """
             <style>
             
