@@ -64,14 +64,13 @@ def bug_fixer(data, fixed, api_key):
         openai.api_key = api_key
 
         # Create the message
-        prompt_message = data+ "Knowing the data, answer the following question to the user in a realistic,simple way.Use the data to support the answers " + fixed + "It is in log log model, convert it to %s in the proper way. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
+        prompt_message = data+ "Knowing the data, answer the following question to the user in a realistic,simple way.Use the data to support the answers " + fixed + "It is in log log model, convert it to %s in the proper way. The percentage changes will be between 0-4% Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
         
         # Call the OpenAI API
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_message,
-            max_tokens=450,
-            temperature =0# Adjust this value based on how long you want the response to be
+            max_tokens=450  # Adjust this value based on how long you want the response to be
         )
         # Return the text part of the response
         return response.choices[0].text.strip()
