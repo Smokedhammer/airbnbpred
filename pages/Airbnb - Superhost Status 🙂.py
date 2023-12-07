@@ -65,7 +65,7 @@ def bug_fixer(data, fixed, api_key):
         openai.api_key = api_key
 
         # Create the message
-        prompt_message = data+ "Knowing the data, answer the following question to the user in a realistic,simple way.Use the data to support the answers " + fixed + "It is in log-log form. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
+        prompt_message = data+ "Knowing the data, answer the following question to the user in a realistic,simple way.Use the data to support the answers " + fixed + "Coefficients are in log-log form, use the following or so if we want percentages: round((math.exp(coef*0.01) -1) * 100 , 3. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
         
         # Call the OpenAI API
         response = openai.Completion.create(
