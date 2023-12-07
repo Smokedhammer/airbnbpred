@@ -167,7 +167,7 @@ def bug_fixer(data, fixed, api_key):
         openai.api_key = api_key
 
         # Create the message
-        prompt_message = data+ "Knowing the data, answer the following question to the user in a simple way.Use the data to support the answers " + fixed + " Tell the user how much it matters and the implications of the answer as well " 
+        prompt_message = data+ "Knowing the data, answer the following question to the user in a simple way.Use the data to support the answers " + fixed + " Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
         
         # Call the OpenAI API
         response = openai.Completion.create(
