@@ -59,26 +59,27 @@ import openai
 
 import openai
 
+import openai
+
 def bug_fixer(data, fixed, api_key):
     try:
         # Set the API key
         openai.api_key = api_key
 
-        # Create the message
-        prompt_message = data+ "Knowing the data, answer the following question to the user in a realistic,simple way.Use the data to support the answers " + fixed + "For every coefficient transform it using round((math.exp(coef*0.01) -1) * 100 , 3) for the percentages. Interpret the coefficients properly and answer the users properly" + " Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context tell them its not a relevant question " 
-        
-        # Call the OpenAI API
+        # Create the messages for the chat completion
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": data + " Knowing the data, answer the following question to the user in a realistic, simple way. Use the data to support the answers. " + fixed + " Coefficients are in log-log form, convert to percentages wherever needed using the relevant processes. Interpret the coefficients properly and answer the users properly. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context, tell them it's not a relevant question."}
+        ]
+
+        # Call the OpenAI API using the chat completions endpoint
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Specify the chat model
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt_message}
-            ]
+            model="gpt-3.5-turbo",
+            messages=messages
         )
 
-
-        # Return the text part of the response
-        return response.choices[0].text.strip()
+        # Return the latest response in the conversation
+        return response.choices[0].message['content'].strip()
     except Exception as e:
         # Handle any errors that occur during the API call
         return f"An error occurred: {str(e)}"
