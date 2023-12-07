@@ -20,8 +20,6 @@ with streamlit_analytics.track():
 ########################
 
 
-openai.api_key = "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"
-
 
 hide_streamlit_style = """
             <style>
@@ -55,30 +53,6 @@ data ="Optimization terminated successfully (Exit mode 0) Current function value
 #  
 #)
 
-import openai
-
-import openai
-
-def bug_fixer(data, fixed, api_key):
-    try:
-        # Set the API key
-        openai.api_key = api_key
-
-        # Create the message
-        prompt_message = data+ "Knowing the data, answer the following question to the user in a simple way.Use the data to support the answers " + fixed + " Tell the user how much it matters and the implications of the answer as well " 
-        
-        # Call the OpenAI API
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt_message,
-            max_tokens=250  # Adjust this value based on how long you want the response to be
-        )
-        # Return the text part of the response
-        return response.choices[0].text.strip()
-    except Exception as e:
-        # Handle any errors that occur during the API call
-        return f"An error occurred: {str(e)}"
-
 
 # Now we create the frontend code and all
 
@@ -88,7 +62,7 @@ logo = Image.open('logo.png')
 
 st.sidebar.image(logo)
 
-st.sidebar.markdown("# Welcome to the AirBnb Prediction Software")
+st.sidebar.markdown("# Welcome to the AirBnb Prediction Software. Click the tabs on the left to get started")
 
 #st.sidebar.markdown(link, unsafe_allow_html=True)
 
@@ -97,17 +71,6 @@ image = Image.open('frontend.png')
 
 st.image(image,caption='Powered by ChatGPT')
 
-st.title("Welcome to the airbnb prediction tool tool powered by the latest AI technology.")
-
-
-fixed=st.text_area("This page determines whether you will maintain your superhost status. Enter your question")
-
-if st.button('Submit'):
-    st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
-
-
-
-    
 
 st.write("----------------------------------------------------------")
 st.write("                                                          ")
