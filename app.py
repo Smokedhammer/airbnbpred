@@ -65,13 +65,13 @@ def bug_fixer(data, fixed, api_key):
         openai.api_key = api_key
 
         # Create the message
-        prompt_message = "Tell the following in a way that is explainable to clients, don't talk technical. Based on only the following: answer the following " + data + " Tell the user how much it matters and the implications of the answer as well " + fixed
+        prompt_message = data+ "Knowing the data, answer the following question to the user in a simple way. " + fixed + " Tell the user how much it matters and the implications of the answer as well " 
         
         # Call the OpenAI API
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_message,
-            max_tokens=150  # Adjust this value based on how long you want the response to be
+            max_tokens=250  # Adjust this value based on how long you want the response to be
         )
         # Return the text part of the response
         return response.choices[0].text.strip()
