@@ -97,10 +97,10 @@ image = Image.open('frontend.png')
 
 st.image(image,caption='Powered by ChatGPT')
 
-st.title("Welcome to the airbnb prediction tool tool powered by the latest AI technology.")
+st.title("This page determines whether you will maintain your superhost status.")
 
 
-fixed=st.text_area("This page determines whether you will maintain your superhost status. Enter your question")
+fixed=st.text_area("Enter your question")
 
 if st.button('Submit'):
     st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
