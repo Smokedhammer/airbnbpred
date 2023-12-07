@@ -71,7 +71,7 @@ def bug_fixer(data, fixed, api_key):
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_message,
-            max_tokens=250  # Adjust this value based on how long you want the response to be
+            max_tokens=450  # Adjust this value based on how long you want the response to be
         )
         # Return the text part of the response
         return response.choices[0].text.strip()
