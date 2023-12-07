@@ -88,7 +88,7 @@ logo = Image.open('logo.png')
 
 st.sidebar.image(logo)
 
-st.sidebar.markdown("# Welcome to the python AI assistant")
+st.sidebar.markdown("# Welcome to the AirBnb Prediction Software")
 
 #st.sidebar.markdown(link, unsafe_allow_html=True)
 
@@ -100,7 +100,7 @@ st.image(image,caption='Powered by ChatGPT')
 st.title("Welcome to the airbnb prediction tool tool powered by the latest AI technology.")
 
 
-fixed=st.text_area("Enter your question")
+fixed=st.text_area("This page determines whether you will maintain your superhost status. Enter your question")
 st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
     
 
@@ -108,15 +108,8 @@ st.write("----------------------------------------------------------")
 st.write("                                                          ")
 st.write("                                                          ")
 
-st.subheader("Help support this free tool by giving us feedback!")
-
 
     # embed streamlit docs in a streamlit app
     
-components.html("""<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScuE8Vf20u03K3PKym99G45asg1UXPJkPs89-17nKMiq2JqCA/viewform?embedded=true" width="350" height="843" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>""",height=850,width=350)
-
-
-
-
     
     
