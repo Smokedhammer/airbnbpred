@@ -69,7 +69,7 @@ def bug_fixer(data, fixed, api_key):
         # Create the messages for the chat completion
         messages = [
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": data + " Knowing the data, answer the following question to the user in a realistic, simple way. Use the data to support the answers. " + fixed + " Coefficients are in log-log form, convert to percentages wherever needed using round((math.exp(coef*0.01) -1) * 100 , 3) It should be a % increase in x leads to a % increase in y based on the formula. Interpret the coefficients properly and answer the users properly. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context, tell them it's not a relevant question."}
+            {"role": "user", "content": data + " Knowing the data, answer the following question to the user in a realistic, simple way. Use the data to support the answers. " + fixed + " Use the following formula round((math.exp(coef*0.01) -1) * 100 , 3):  It should be a % increase in x leads to a % increase in y based on the formula. Interpret the coefficients properly and answer the users properly. Tell the user how much it matters and the implications of the answer as well. If the question is not relevant to context, tell them it's not a relevant question."}
         ]
 
         # Call the OpenAI API using the chat completions endpoint
