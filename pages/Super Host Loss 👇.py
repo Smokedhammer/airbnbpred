@@ -69,10 +69,11 @@ def bug_fixer(data, fixed, api_key):
         
         # Call the OpenAI API
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine="gpt-3.5-turbo",  # Use the Turbo model
             prompt=prompt_message,
             max_tokens=450  # Adjust this value based on how long you want the response to be
-        )
+            )
+
         # Return the text part of the response
         return response.choices[0].text.strip()
     except Exception as e:
