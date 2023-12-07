@@ -101,7 +101,12 @@ st.title("Welcome to the airbnb prediction tool tool powered by the latest AI te
 
 
 fixed=st.text_area("This page determines whether you will maintain your superhost status. Enter your question")
-st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
+
+if st.button('Submit'):
+    st.write(bug_fixer(fixed=fixed,data=data,api_key=openai.api_key))
+
+
+
     
 
 st.write("----------------------------------------------------------")
