@@ -76,7 +76,8 @@ def bug_fixer(data, fixed, api_key):
         # Call the OpenAI API using the chat completions endpoint
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=messages
+            messages=messages,
+            temperature = 0
         )
 
         # Return the latest response in the conversation
